@@ -71,7 +71,7 @@ opkg install luci-i18n-alist-fuse-zh-cn_0.1.1-1_all.ipk
 
 ```bash
 USAGE:
-    alist-fuse [OPTIONS] --refresh-token <REFRESH_TOKEN> <PATH>
+    alist-fuse [OPTIONS] --alist-user <Alist_USER> --alist-password <Alist_PASSWORD> --api-url <API_URL> -w <WORKDIR> <PATH>
 
 ARGS:
     <PATH>    Mount point
@@ -93,7 +93,7 @@ OPTIONS:
 
 ```bash
 mkdir -p /mnt/alistDrive /var/run/alist-fuse
-alist-fuse --alist-user XXXXXXXXX --alist-password XXXXXXX -w /var/run/alist-fuse /mnt/alistDrive
+alist-fuse --alist-user XXXXXXXXX --alist-password XXXXXXX --api-url XXXXXXX -w /var/run/alist-fuse /mnt/alistDrive
 ```
 
 ## Emby/Jellyfin

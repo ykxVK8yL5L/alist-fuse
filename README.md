@@ -8,9 +8,6 @@
 ```
 ./alist-fuse --alist-user XXXXXXXXX --alist-password XXXXXXX  -w token保存目录  挂载点
 ```
-## 有网友反馈非邮箱登陆会登陆失败，请使用邮箱、密码方式登陆.Gmail用户请在alist后台设置密码.
-
-
 
 
 
@@ -27,10 +24,10 @@
 
 alist网盘 FUSE 磁盘挂载，主要用于配合 [Emby](https://emby.media) 或者 [Jellyfin](https://jellyfin.org) 观看alist网盘内容，功能特性：
 
-~1. 目前只读，不支持写入~   
+1. 目前只读，不支持写入   
 2. 支持 Linux 和 macOS  
 
-[alist-webdav](https://github.com/ykxVK8yL5L/alist-webdav) 项目已经实现了通过 WebDAV 访问alist网盘内容，但由于 Emby 和 Jellyfin 都不支持直接访问 WebDAV 资源，
+[alist](https://github.com/alist-org/alist) 项目已经实现了通过 WebDAV 访问网盘内容，但由于 Emby 和 Jellyfin 都不支持直接访问 WebDAV 资源，
 需要配合 [rclone](https://rclone.org) 之类的软件将 WebDAV 挂载为本地磁盘，而本项目则直接通过 FUSE 实现将alist网盘挂载为本地磁盘，省去使用 rclone 再做一层中转。
 
 ## 安装

@@ -22,10 +22,10 @@ struct Opt {
     #[clap(parse(from_os_str))]
     path: PathBuf,
 
-    #[structopt(long, env = "Alist_USER")]
+    #[structopt(long, env = "ALIST_USER")]
     alist_user: String,
 
-    #[structopt(long, env = "Alist_PASSWORD")]
+    #[structopt(long, env = "ALIST_PASSWORD")]
     alist_password: String,
 
     #[structopt(long, env = "API_URL", default_value = "")]

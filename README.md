@@ -71,7 +71,7 @@ opkg install luci-i18n-alist-fuse-zh-cn_0.1.1-1_all.ipk
 
 ```bash
 USAGE:
-    alist-fuse [OPTIONS] --alist-user <Alist_USER> --alist-password <Alist_PASSWORD> --api-url <API_URL> -w <WORKDIR> <PATH>
+    alist-fuse [OPTIONS] --alist-user <ALIST_USER> --alist-password <ALIST_PASSWORD> --api-url <API_URL> -w <WORKDIR> <PATH>
 
 ARGS:
     <PATH>    Mount point
@@ -80,8 +80,8 @@ OPTIONS:
         --allow-other                            Allow other users to access the drive
         --domain-id <DOMAIN_ID>                  PDS domain id
     -h, --help                                   Print help information
-    --alist-user <Alist_USER>                  [env: Alist_USER=]
-    --alist-password <Alist_PASSWORD>          [env: Alist_PASSWORD=]
+    --alist-user <ALIST_USER>                  [env: ALIST_USER=]
+    --alist-password <ALIST_PASSWORD>          [env: ALIST_PASSWORD=]
     --api-url <API_URL>                      [env: API_URL=]
     
     -S, --read-buffer-size <READ_BUFFER_SIZE>    Read/download buffer size in bytes, defaults to 10MB [default: 10485760]

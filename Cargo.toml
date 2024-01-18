@@ -1,0 +1,71 @@
+[package]
+name = "alist-fuse"
+version = "0.1.14"
+edition = "2021"
+description = "FUSE for alist"
+license = "MIT"
+homepage = "https://github.com/ykxVK8yL5L/alist-fuse"
+repository = "https://github.com/ykxVK8yL5L/alist-fuse.git"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0"
+bytes = "1.0"
+clap = { version = "3.0", features = ["derive", "env", "wrap_help"] }
+fuser = { version = "0.11", default-features = false }
+libc = "0.2"
+oneshot = { version = "0.1", default-features = false, features = ["std"] }
+openssl-probe = { version = "0.1", optional = true }
+parking_lot = "0.12"
+reqwest = { version = "0.11", default-features = false, features = ["json", "gzip", "blocking"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "=1.0"
+time = { version = "0.3", features = ["formatting", "parsing"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "local-time"] }
+url = "2.2"
+moka = { version = "0.9.3", default-features = false, features = ["future"] }
+sha-1 = { version = "0.9", default-features = false }
+sha256 = "1.5.0"
+hex-literal = "0.3.4"
+hmac-sha = "0.6"
+base64 = "0.13.0"
+httpdate = "1.0.2"
+quick-xml = { version = "0.22", features = [ "serialize" ] }
+
+[features]
+default = ["rustls-tls", "libfuse"]
+rustls-tls = ["reqwest/rustls-tls"]
+native-tls = ["reqwest/native-tls"]
+native-tls-vendored = ["reqwest/native-tls-vendored", "openssl-probe"]
+libfuse = ["fuser/libfuse"]
+
+[profile.release]
+lto = true
+opt-level = "z"  # Optimize for size
+
+[package.metadata.deb]
+maintainer = "ykxVK8yL5L <ykxVK8yL5L@icloud.com>"
+copyright = "2021-present, ykxVK8yL5L <ykxVK8yL5L@icloud.com>"
+license-file = ["LICENSE", "4"]
+extended-description = """\
+alist网盘 FUSE 磁盘挂载"""
+depends = "fuse3"
+section = "utility"
+priority = "optional"
+assets = [
+    ["target/release/alist-fuse", "usr/bin/", "755"],
+    ["systemd.service", "etc/systemd/system/alist-fuse.service", "644"],
+]
+
+[package.metadata.generate-rpm]
+assets = [
+    { source = "target/release/alist-fuse", dest = "/usr/bin/alist-fuse", mode = "0755" },
+    { source = "LICENSE", dest = "/usr/share/doc/alist-fuse/LICENSE", doc = true, mode = "0644" },
+    { source = "systemd.service", dest = "/etc/systemd/system/alist-fuse.service", config = true, mode = "0644" },
+]
+
+[package.metadata.generate-rpm.requires]
+fuse3 = "*"

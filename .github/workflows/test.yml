@@ -1,0 +1,54 @@
+name: Test for Linux
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release'
+        required: true
+        default: 'v0.1.14'
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [
+          { target: "x86_64-unknown-linux-musl", image_tag: "x86_64-musl", wheel: true, deb: true },
+        ]
+    container:
+      image: docker://messense/rust-musl-cross:${{ matrix.platform.image_tag }}
+      env:
+        CFLAGS_armv7_unknown_linux_musleabihf: '-mfpu=vfpv3-d16'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache cargo build
+        uses: Swatinem/rust-cache@v1
+        with:
+          key: ${{ matrix.platform.target }}
+      - name: Build wheels - manylinux
+        uses: messense/maturin-action@main
+        with:
+          target: ${{ matrix.platform.target }}
+          manylinux: auto
+          container: off
+          args: --no-sdist --release -o dist --strip --cargo-extra-args="--no-default-features --features rustls-tls"
+      - name: Build wheels - musllinux
+        if: matrix.platform.wheel
+        uses: messense/maturin-action@v1
+        with:
+          target: ${{ matrix.platform.target }}
+          manylinux: musllinux_1_1
+          container: off
+          args: --no-sdist --release -o dist --strip --cargo-extra-args="--no-default-features --features rustls-tls"
+      - name: Upx compress binary
+        uses: crazy-max/ghaction-upx@v1
+        with:
+          version: latest
+          files: target/${{ matrix.platform.target }}/release/alist-fuse
+      - name: Upload binary artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.platform.target }}-bin
+          path: target/${{ matrix.platform.target }}/release/alist-fuse
+          if-no-files-found: error

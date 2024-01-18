@@ -1,0 +1,11 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.@alist-fuse[-1]
+	add ucitrack alist-fuse
+	set ucitrack.@alist-fuse[-1].init=alist-fuse
+	commit ucitrack
+EOF
+
+rm -f /tmp/luci-indexcache
+exit 0

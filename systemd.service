@@ -1,0 +1,15 @@
+[Unit]
+Description=alistDrive FUSE
+After=network.target
+
+[Service]
+Type=simple
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/run/alist-fuse -p /mnt/alistDrive
+Environment="REFRESH_TOKEN="
+ExecStart=/usr/bin/alist-fuse --allow-other -w /var/run/alist-fuse /mnt/alistDrive
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

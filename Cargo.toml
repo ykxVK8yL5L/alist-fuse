@@ -1,6 +1,6 @@
 [package]
 name = "alist-fuse"
-version = "0.1.14"
+version = "0.1.1"
 edition = "2021"
 description = "FUSE for alist"
 license = "MIT"

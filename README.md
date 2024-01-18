@@ -58,12 +58,12 @@ sudo snap install alist-fuse
 aarch64/arm/x86_64/i686 等架构的版本，可以下载后使用 opkg 安装，以 nanopi r4s 为例：
 
 ```bash
-wget https://github.com/ykxVK8yL5L/alist-fuse/releases/download/v0.1.14/alist-fuse_0.1.14-1_aarch64_generic.ipk
-wget https://github.com/ykxVK8yL5L/alist-fuse/releases/download/v0.1.14/luci-app-alist-fuse_0.1.14_all.ipk
-wget https://github.com/ykxVK8yL5L/alist-fuse/releases/download/v0.1.14/luci-i18n-alist-fuse-zh-cn_0.1.14-1_all.ipk
-opkg install alist-fuse_0.1.13-1_aarch64_generic.ipk
-opkg install luci-app-alist-fuse_0.1.13_all.ipk
-opkg install luci-i18n-alist-fuse-zh-cn_0.1.13-1_all.ipk
+wget https://github.com/ykxVK8yL5L/alist-fuse/releases/download/v0.1.1/alist-fuse_0.1.1-1_aarch64_generic.ipk
+wget https://github.com/ykxVK8yL5L/alist-fuse/releases/download/v0.1.1/luci-app-alist-fuse_0.1.1_all.ipk
+wget https://github.com/ykxVK8yL5L/alist-fuse/releases/download/v0.1.1/luci-i18n-alist-fuse-zh-cn_0.1.1-1_all.ipk
+opkg install alist-fuse_0.1.1-1_aarch64_generic.ipk
+opkg install luci-app-alist-fuse_0.1.1_all.ipk
+opkg install luci-i18n-alist-fuse-zh-cn_0.1.1-1_all.ipk
 ```
 
 其它 CPU 架构的路由器可在 [GitHub Releases](https://github.com/ykxVK8yL5L/alist-fuse/releases) 页面中查找对应的架构的主程序 ipk 文件下载安装。

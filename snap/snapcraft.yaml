@@ -1,5 +1,5 @@
 name: alist-fuse
-version: '0.1.14'
+version: '0.1.1'
 summary: alist网盘 FUSE
 description: |
   alist网盘 FUSE 磁盘挂载

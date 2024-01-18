@@ -233,7 +233,7 @@ jobs:
           tag: "refs/tags/${{ github.event.inputs.tag }}"
   openwrt:
     name: OpenWrt Package - ${{ matrix.target.arch }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: [ linux,linux-others ]
     environment: OpenWrt
     strategy:
@@ -270,7 +270,7 @@ jobs:
           gettext git java-propose-classpath libelf-dev libncurses5-dev \
           libncursesw5-dev libssl-dev python python2.7-dev python3 unzip wget \
           python3-distutils python3-setuptools python3-dev rsync subversion \
-          swig time xsltproc zlib1g-dev python-is-python3
+          swig time xsltproc zlib1g-dev
       - name: Install OpenWrt SDK
         run: |
           wget -O openwrt-sdk.tar.xz ${{ matrix.target.sdk }}

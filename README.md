@@ -4,7 +4,7 @@
 # https://youtu.be/yEOhw2mQwyI
 
 # 基本完成      
-命令行使用【可选参数--proxy-url xxxxxxxx】:
+命令行使用【可选参数--api-url xxxxxxxx】:
 ```
 ./alist-fuse --alist-user XXXXXXXXX --alist-password XXXXXXX  -w token保存目录  挂载点
 ```
@@ -28,7 +28,7 @@
 alist网盘 FUSE 磁盘挂载，主要用于配合 [Emby](https://emby.media) 或者 [Jellyfin](https://jellyfin.org) 观看alist网盘内容，功能特性：
 
 ~1. 目前只读，不支持写入~   
-2. 支持 Linux 和 macOS，暂不支持 Windows(Mac上上传文件会闪退暂不解决).  
+2. 支持 Linux 和 macOS  
 
 [alist-webdav](https://github.com/ykxVK8yL5L/alist-webdav) 项目已经实现了通过 WebDAV 访问alist网盘内容，但由于 Emby 和 Jellyfin 都不支持直接访问 WebDAV 资源，
 需要配合 [rclone](https://rclone.org) 之类的软件将 WebDAV 挂载为本地磁盘，而本项目则直接通过 FUSE 实现将alist网盘挂载为本地磁盘，省去使用 rclone 再做一层中转。
@@ -81,11 +81,11 @@ ARGS:
 
 OPTIONS:
         --allow-other                            Allow other users to access the drive
-        --domain-id <DOMAIN_ID>                  Aliyun PDS domain id
+        --domain-id <DOMAIN_ID>                  PDS domain id
     -h, --help                                   Print help information
     --alist-user <Alist_USER>                  [env: Alist_USER=]
     --alist-password <Alist_PASSWORD>          [env: Alist_PASSWORD=]
-    --proxy-url <API_URL>                      [env: API_URL=]
+    --api-url <API_URL>                      [env: API_URL=]
     
     -S, --read-buffer-size <READ_BUFFER_SIZE>    Read/download buffer size in bytes, defaults to 10MB [default: 10485760]
     -V, --version                                Print version information
@@ -116,6 +116,9 @@ docker run -d --name jellyfin \
   --restart unless-stopped \
   jellyfin/jellyfin
 ```
+
+# 项目源码从<https://github.com/messense/aliyundrive-fuse> 复制而来,做为rust的入门学习，相当不错。
+
 
 ## License
 

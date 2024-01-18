@@ -11,8 +11,8 @@ msgstr "用户名"
 msgid "Password"
 msgstr "密码"
 
-msgid "Proxy Url"
-msgstr "代理地址"
+msgid "API Url"
+msgstr "ALIST主机地址"
 
 msgid "alistDrive FUSE"
 msgstr "Alist网盘 FUSE"

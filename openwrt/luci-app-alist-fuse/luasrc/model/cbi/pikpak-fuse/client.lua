@@ -20,8 +20,8 @@ password.description = translate("Password")
 password.rmempty = false
 password.password = true
 
-api_url = e:option(Value, "api_url", translate("Proxy Url"))
-api_url.description = translate("Proxy Url")
+api_url = e:option(Value, "api_url", translate("API Url"))
+api_url.description = translate("API Url")
 api_url.rmempty = true
 
 

@@ -4,9 +4,9 @@
 # https://youtu.be/yEOhw2mQwyI
 
 # 基本完成      
-命令行使用【可选参数--api-url xxxxxxxx】:
+命令行使用:
 ```
-./alist-fuse --alist-user XXXXXXXXX --alist-password XXXXXXX  -w token保存目录  挂载点
+./alist-fuse --alist-user XXXXXXXXX --alist-password XXXXXXX --api-url XXXXXXX  -w token保存目录  挂载点
 ```
 
 
